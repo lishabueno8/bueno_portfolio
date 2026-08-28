@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+
+@source '../views';
+@source '../../app';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji';
+
+    --color-background: var(--portfolio-bg);
+    --color-surface: var(--portfolio-surface);
+    --color-foreground: var(--portfolio-foreground);
+    --color-muted: var(--portfolio-muted);
+    --color-muted-foreground: var(--portfolio-muted-foreground);
+    --color-border: var(--portfolio-border);
+    --color-primary: var(--portfolio-primary);
+    --color-secondary: var(--portfolio-secondary);
+    --color-accent: var(--portfolio-accent);
+}
+
+:root,
+.dark {
+    --portfolio-bg: oklch(0.16 0.02 160);
+    --portfolio-surface: oklch(0.2 0.02 160);
+    --portfolio-foreground: oklch(0.95 0.01 160);
+    --portfolio-muted: oklch(0.7 0.02 160);
+    --portfolio-muted-foreground: oklch(0.75 0.02 160);
+    --portfolio-border: oklch(0.3 0.025 160);
+    --portfolio-primary: oklch(0.82 0.22 155);
+    --portfolio-secondary: oklch(0.72 0.2 165);
+    --portfolio-accent: oklch(0.76 0.17 150);
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+        color-scheme: dark;
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-foreground);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+        background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+    }
+}
