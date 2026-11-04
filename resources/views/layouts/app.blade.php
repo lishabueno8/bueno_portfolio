@@ -6,6 +6,9 @@
     <meta name="description" content="Personal portfolio of {{ $profile['name'] }}.">
     <meta name="theme-color" content="#0b1f14">
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/images/profile.jpg">
+
     <title>{{ $profile['name'] }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

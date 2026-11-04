@@ -47,7 +47,7 @@ class PortfolioController extends Controller
 
         $stats = [
             ['value' => '3+', 'label' => 'Years of Experience'],
-            ['value' => '4', 'label' => 'Certifications Earned'],
+            ['value' => '6', 'label' => 'Certifications Earned'],
         ];
 
         $education = [
@@ -69,77 +69,67 @@ class PortfolioController extends Controller
 
         $certificates = [
             [
-                'title' => 'Stay Alert, stay secure: Promoting Cyber Awarenss Online and Scam Prevention',
+                'title' => 'Introduction to Modern AI',
+                'issuer' => 'Cisco Networking Academy',
+                'year' => 'October 21, 2026',
+                'date' => '2026-10-21',
+                'icon' => '',
+                'image' => 'certificates/cert5.jpg',
+            ],
+            [
+                'title' => 'Understanding Startups & Getting Your Idea Ready for the Philippine Startup Challenge XI',
+                'issuer' => 'DICT Cordillera Administrative Region',
+                'year' => 'September 7, 2026',
+                'date' => '2026-09-07',
+                'icon' => '',
+                'image' => 'certificates/cert4.jpg',
+            ],
+            [
+                'title' => 'Stay Alert, Stay Secure: Promoting Cyber Awareness Online and Scam Prevention',
                 'issuer' => 'CHED',
                 'year' => 'July 23, 2026',
+                'date' => '2026-07-23',
                 'icon' => '',
                 'image' => 'certificates/cert%201.png',
             ],
             [
-                'title' => 'Online Safety Through Nettiquette',
+                'title' => 'Online Safety Through Netiquette',
                 'issuer' => 'DICT',
                 'year' => 'July 23, 2026',
+                'date' => '2026-07-23',
                 'icon' => '',
                 'image' => 'certificates/cert%202.png',
-            ],
-            [
-                'title' => 'Empowering the Next Gen: ICT Career Prep Essentials Webinar',
-                'issuer' => 'DICT',
-                'year' => 'July 23, 2026June 26, 2025',
-                'icon' => '',
-                'image' => 'certificates/cert%203.png',
             ],
             [
                 'title' => 'National Certificate (NC) II in Computer Systems Servicing',
                 'issuer' => 'Technical Education and Skills Development Authority',
                 'year' => 'September 6, 2025',
+                'date' => '2025-09-06',
                 'icon' => '',
                 'image' => 'certificates/nc2 cert.png',
             ],
+            [
+                'title' => 'Empowering the Next Gen: ICT Career Prep Essentials Webinar',
+                'issuer' => 'DICT Cordillera Administrative Region',
+                'year' => 'June 26, 2025',
+                'date' => '2025-06-26',
+                'icon' => '',
+                'image' => 'certificates/cert%203.png',
+            ],
         ];
+
+        $certificates = collect($certificates)->sortByDesc('date')->values()->all();
 
         $projects = [
             [
-                'title' => 'Laravel Blog Platform',
-                'description' => 'A full-featured blogging system with authentication, markdown authoring, categories, comments, and an admin dashboard.',
-                'tags' => ['Laravel', 'Blade', 'MySQL'],
-                'github' => 'https://lishabueno8.github.io/blog-platform',
-                'gradient' => 'from-emerald-500 to-green-600',
-            ],
-            [
-                'title' => 'Task Manager REST API',
-                'description' => 'A stateless JSON API for task management with token auth, validation, pagination, and API tests.',
-                'tags' => ['Laravel', 'Sanctum', 'REST'],
-                'github' => 'https://lishabueno8.github.io/task-manager-api',
-                'gradient' => 'from-teal-500 to-cyan-600',
-            ],
-            [
-                'title' => 'E-Commerce Storefront',
-                'description' => 'A responsive storefront UI with product grids, cart interactions, and a smooth checkout flow.',
-                'tags' => ['Tailwind', 'Alpine.js', 'Vite'],
-                'github' => 'https://lishabueno8.github.io/storefront-ui',
-                'gradient' => 'from-lime-500 to-green-600',
-            ],
-            [
-                'title' => 'Weather Dashboard',
-                'description' => 'A live weather dashboard that consumes a public API to render forecasts, charts, and location search.',
-                'tags' => ['JavaScript', 'REST API', 'Tailwind'],
-                'github' => 'https://lishabueno8.github.io/weather-dashboard',
-                'gradient' => 'from-emerald-600 to-teal-500',
-            ],
-            [
-                'title' => 'Inventory Management System',
-                'description' => 'An internal tool for tracking stock, handling supplier orders, and producing simple reports.',
-                'tags' => ['Laravel', 'Livewire', 'SQLite'],
-                'github' => 'https://lishabueno8.github.io/inventory-system',
-                'gradient' => 'from-green-600 to-emerald-500',
-            ],
-            [
-                'title' => 'This Portfolio',
-                'description' => 'A static single-page portfolio built with Blade, Tailwind CSS v4, and Vite, using no database at all.',
-                'tags' => ['Blade', 'Tailwind', 'Vite'],
-                'github' => 'https://lishabueno8.github.io/BUENO_PORTFOLIO',
-                'gradient' => 'from-teal-500 to-emerald-600',
+                'title' => 'Bangued-Ka-Fuel',
+                'description' => 'A web-based fuel price monitoring system for Bangued, Abra. It plots fuel stations on an interactive map, lets visitors filter stations by brand, and gives station managers an admin dashboard for managing stations, updating fuel prices, and keeping listing statuses current.',
+                'tags' => ['Web Application', 'Interactive Map', 'Admin Dashboard'],
+                'screenshots' => [
+                    ['label' => 'Station map & brand filters', 'image' => 'images/project1.png'],
+                    ['label' => 'Station management dashboard', 'image' => 'images/project2.png'],
+                    ['label' => 'Fuel prices & station details', 'image' => 'images/project3.png'],
+                ],
             ],
         ];
 

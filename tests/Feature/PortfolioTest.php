@@ -15,7 +15,7 @@ class PortfolioTest extends TestCase
     {
         $response = $this->get('/');
 
-        foreach (['home', 'about', 'education', 'projects', 'contact'] as $section) {
+        foreach (['home', 'about', 'education', 'certificates', 'projects', 'contact'] as $section) {
             $response->assertSee('id="'.$section.'"', false);
         }
     }
@@ -24,8 +24,7 @@ class PortfolioTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertSee('id="theme-toggle"', false)
-            ->assertSee('id="menu-btn"', false)
+        $response->assertSee('id="menu-btn"', false)
             ->assertSee('id="mobile-menu"', false)
             ->assertSee('data-nav-link="projects"', false);
     }
@@ -34,12 +33,26 @@ class PortfolioTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertSee('Alex Bueno')
+        $response->assertSee('Celyn Lisha Bueno')
+            ->assertSee('Bangued-Ka-Fuel')
             ->assertSee('Years of Experience', false)
-            ->assertSee('Projects Completed', false)
             ->assertSee('Certifications Earned', false)
-            ->assertSee('Certified Laravel Developer', false)
-            ->assertSee('View Source', false)
+            ->assertSee('Introduction to Modern AI')
             ->assertSee('GitHub Profile', false);
+    }
+
+    public function test_certificates_are_ordered_from_latest_to_oldest(): void
+    {
+        $html = $this->get('/')->getContent();
+
+        $latest = strpos($html, 'Introduction to Modern AI');
+        $second = strpos($html, 'Understanding Startups &amp; Getting Your Idea Ready');
+        $oldest = strpos($html, 'Empowering the Next Gen');
+
+        $this->assertNotFalse($latest);
+        $this->assertNotFalse($second);
+        $this->assertNotFalse($oldest);
+        $this->assertTrue($latest < $second);
+        $this->assertTrue($second < $oldest);
     }
 }

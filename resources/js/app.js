@@ -118,6 +118,53 @@ function initCertificateModal() {
     });
 }
 
+function initProjectModal() {
+    const modal = document.getElementById('project-modal');
+    const backdrop = document.getElementById('project-modal-backdrop');
+    const closeBtn = document.getElementById('project-modal-close');
+    const image = document.getElementById('project-modal-image');
+    const title = document.getElementById('project-modal-title');
+
+    if (!modal || !image || !title) {
+        return;
+    }
+
+    const openModal = (src, projectTitle) => {
+        image.src = src;
+        image.alt = projectTitle;
+        title.textContent = projectTitle;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        closeBtn?.focus();
+    };
+
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+        image.src = '';
+    };
+
+    document.querySelectorAll('[data-project-open]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            openModal(
+                btn.getAttribute('data-project-open'),
+                btn.getAttribute('data-project-title') || 'Project screenshot',
+            );
+        });
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    backdrop?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     menuBtn?.addEventListener('click', toggleMobileMenu);
     mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
@@ -125,4 +172,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollSpy();
     initContactForm();
     initCertificateModal();
+    initProjectModal();
 });
